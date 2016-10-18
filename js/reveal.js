@@ -2926,7 +2926,7 @@
 				// Images
 				if( backgroundImage ) {
 					background.style.backgroundImage = 'url('+ backgroundImage +')';
-					background.style.opacity = '0.25'
+					background.style.opacity = '0.45'
 				}
 				// Videos
 				else if ( backgroundVideo && !isSpeakerNotes() ) {
