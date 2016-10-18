@@ -1,0 +1,90 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>reveal.js</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/black.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+				<section data-background-image="http://sniezynka.com.pl/images/deserowe/27.jpg">
+					<img src="https://ngeurope.org/events/44/logo.png" style="width: 35%; opacity: 0.8">
+					<h2>Custom widgets for Angular2?</h2>
+					<h3>Piece of cake!</h3>
+					<br>
+					<p style="font-size: 25px">Pawel Kozlowski (<a href="https://twitter.com/pkozlowski_os" target="_blank">@pkozlowski_os</a>)</p>
+				</section>
+
+				<section data-background-image="https://v4-alpha.getbootstrap.com/assets/img/components.png">
+					<h1>Widgets</h1>
+				</section>
+
+				<section data-background-image="http://www.healthbizdecoded.com/wp-content/uploads/2013/10/Native-American.jpg">
+					<h1>Native</h1>
+				</section>
+
+				<section data-background-image="http://www.justincook.me/wp-content/uploads/2015/09/Standing-On-The-Shoulders-Of-Giants.jpg">
+					<br><br><br><br><br><br><br><br>
+					<h1>Shoulders Of Giants</h1>
+					<!--<img src="https://lh6.googleusercontent.com/-TlY7amsfzPs/T9ZgLXXK1cI/AAAAAAABK-c/Ki-inmeYNKk/w749-h794/AngularJS-Shield-large.png" style="width: 35%">-->
+				</section>
+
+				<section data-background-image="http://tech.co/wp-content/uploads/2015/01/climb_next_level_640x320.jpg">
+					<h1>Next level</h1>
+					<img src="https://angular.io/resources/images/logos/angular2/angular.svg" style="width: 45%">
+				</section>
+
+				<section data-background-image="http://chocolatechocolateandmore.com/wp-content/uploads/2015/06/Brown-and-White-Sugar-Cubes-28c.jpg">
+					<h1>Sweet!</h1>
+				</section>
+
+				<section data-background-image="http://www.telegraph.co.uk/content/dam/Travel/leadAssets/29/75/steak-fritesUSE_2975786a-large.jpg">
+					<h1>Bon Appétit!</h1>
+				</section>
+			</div>
+
+			<!--<footer style="font-size: 0.6em; display: block; height: 30px; padding: 20px">
+					Pawel Kozlowski (@pkozlowski_os)
+ ng-europe October 25 - 26, 2016 — Paris, France;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</footer>-->
+		</div>
+
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: false,
+				history: true,
+			 	backgroundTransition: 'none', //'concave',
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
