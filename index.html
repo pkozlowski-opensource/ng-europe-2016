@@ -78,23 +78,69 @@
                 </section>
 
 				<section>
+					<h1>Inert &lt;template&gt;</h1>
+<pre><code>&lt;uib-tabset&gt;
+    &lt;uib-tab title="Simple"&gt;Some simple text&lt;/uib-tab&gt;
+    &lt;uib-tab title="Expensive stuff"&gt;
+      &lt;very-expensive-stuff&gt;&lt;/very-expensive-stuff&gt;
+    &lt;/uib-tab&gt;
+&lt;/uib-tabset&gt;</code></pre>
+					<h4>⇩</h4>
+<pre><code>&lt;ngb-tabset&gt;
+  &lt;ngb-tab title="Simple"&gt;
+    &lt;template ngbTabContent&gt;Some simple text&lt;/template&gt;
+  &lt;/ngb-tab&gt;
+  &lt;ngb-tab title="Expensive stuff"&gt;
+    &lt;template ngbTabContent&gt;
+      &lt;very-expensive-stuff&gt;&lt;/&lt;very-expensive-stuff&gt;
+    &lt;/template&gt;
+  &lt;/ngb-tab&gt;
+&lt;/ngb-tabset&gt;</code></pre>
+				</section>
+
+				<section>
+					<h1>Reactive parenting</h1>
+<pre><code>@Component({
+  template: `
+    &lt;ul [class]="'nav nav-' + type" role="tablist"&gt;
+      &lt;li class="nav-item" *ngFor="let tab of tabs"&gt;...&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class="tab-content"&gt;
+      &lt;template ngFor let-tab [ngForOf]="tabs"&gt;
+        ...
+      &lt;/template&gt;
+    &lt;/div&gt;`
+})
+export class NgbTabset implements AfterContentChecked {
+
+  @ContentChildren(NgbTab) tabs: QueryList&lt;NgbTab&gt;;
+  ...
+}</code></pre>
+				</section>
+
+				<section>
+					<h1>Exported instances (1/2)</h1>
+<pre><code>&lt;button ngbTooltip="Hint!"&gt;
+  I've got a tooltip!
+&lt;/button&gt;</code></pre>
+				</section>
+
+				<section>
+					<h1>Exported instances (2/2)</h1>
+					<h4>html</h4>
+					<pre><code>&lt;button ngbTooltip="Hint!" #t="ngbTooltip" (click)="t.toggle()"&gt;
+  I've got a tooltip!
+&lt;/button&gt;</code></pre>
+					<h4>code</h4>
+					<pre><code>@Directive({selector: '[ngbTooltip]', exportAs: 'ngbTooltip'})
+export class NgbTooltip implements OnInit, OnDestroy {
+     ...
+}</code></pre>
+				</section>
+
+				<section>
 					<h1><code>replace="false"</code></h1>
 					<p>TODO: code example from ...</p>
-				</section>
-
-				<section>
-					<h1>Inert &lt;template&gt;</h1>
-					<p>TODO: code example from tabset</p>
-				</section>
-
-				<section>
-					<h1>Queries</h1>
-					<p>TODO: code example from tabset</p>
-				</section>
-
-				<section>
-					<h1>Exported instances</h1>
-					<p>TODO: code example from a datepicker / tooltip</p>
 				</section>
 
 				<section data-background-image="img/rusty_pipe.jpg">
@@ -117,6 +163,11 @@
 						<pre><code>(kayup.enter)="selectItem($vent)"</code></pre>
 						<pre><code>(document:click)="closeOthers($vent)"</code></pre>
 					</ul>
+				</section>
+
+				<section data-background-image="http://e.fastcompany.net/multisite_files/fastcompany/imagecache/1280/poster/2013/08/3016204-poster-p-google-may-bring-you-a-self-driving-car-sooner-than-later.jpg">
+					<h1 >Performance</h1>
+					<h4><code>ChangeDetectionStrategy.OnPush</code></h4>
 				</section>
 
 				<section data-background-image="img/ng-bootstrap-universal.png">
