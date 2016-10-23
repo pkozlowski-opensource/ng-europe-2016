@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" class="chart" width="700" height="100" aria-labelledby="title" role="img">
+  <g class="bar">
+    <rect width="600" height="35" y="0" fill="#573D7D"></rect>
+  </g>
+  <g class="bar">
+    <rect width="240" height="35" y="40" fill="#015FBF"></rect>
+  </g>
+</svg>

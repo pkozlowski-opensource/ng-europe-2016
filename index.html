@@ -27,7 +27,7 @@
 
 				<section data-background-image="img/cake.jpg">
 					<img src="https://ngeurope.org/events/44/logo.png" style="width: 35%; opacity: 0.8">
-					<h2>Custom widgets for Angular2?</h2>
+					<h2>Custom widgets for Angular 2?</h2>
 					<h3>Piece of cake!</h3>
 					<br>
 					<p style="font-size: 25px">Pawel Kozlowski (<a href="https://twitter.com/pkozlowski_os" target="_blank">@pkozlowski_os</a>)</p>
@@ -53,7 +53,17 @@
 
 				<section>
 					<h1>Dependency injection</h1>
-					<p>TODO: calendar in datepicker</p>
+					<br>
+					<blockquote>"Add Hijri & Hebrew Calendar support to datepicker"</blockquote>
+					<br>
+					<pre><code>@Component({...})
+export class NgbDatepicker {
+
+  constructor(private _calendar: NgbCalendar) {
+    ...
+  }
+
+}</code></pre>
 				</section>
 
 				<section data-background-image="img/travis-ci-testing.png">
@@ -66,26 +76,39 @@
 				</section>
 
 				<section>
-					<h1>Clear semantics</h1>
+					<h1>(Un)clear semantics</h1>
 					<h4>Bindings</h4>
-                    <pre><code>&lt;div uib-tooltip="exp"&gt; vs. &lt;div uib-tooltip="{{exp}}&gt;"</code></pre>
+                    <pre style="font-size: 0.7em"><code>&lt;div uib-tooltip="exp"&gt;
+&lt;div uib-tooltip="{{exp}}"&gt;
+&lt;div uib-tooltip="Static text"&gt;</code></pre>
                     <h4>Mixed case names</h4>
-                    <pre><code>&lt;div uib-tooltip="..."&gt; vs. &lt;div uibTooltip="..."&gt;</code></pre>
+                    <pre style="font-size: 0.7em"><code>&lt;div uib-tooltip="..."&gt
+&lt;div uibTooltip="..."&gt;</code></pre>
 				</section>
 
-                <section>
+				<section>
                     <img src="img/ui_bootstrap_reading_doc.png" alt="">
                 </section>
 
 				<section>
+					<h1>Clear semantics</h1>
+                    <pre style="font-size: 1.2em"><code>&lt;div [ngbTooltip]="exp"&gt;
+&lt;div ngbTooltip="Static text"&gt;</code></pre>
+				</section>
+
+				<section>
 					<h1>Inert &lt;template&gt;</h1>
+					TODO: tabset img
 <pre><code>&lt;uib-tabset&gt;
     &lt;uib-tab title="Simple"&gt;Some simple text&lt;/uib-tab&gt;
     &lt;uib-tab title="Expensive stuff"&gt;
       &lt;very-expensive-stuff&gt;&lt;/very-expensive-stuff&gt;
     &lt;/uib-tab&gt;
 &lt;/uib-tabset&gt;</code></pre>
-					<h4>⇩</h4>
+				</section>
+
+				<section>
+					<h1>Inert &lt;template&gt;</h1>
 <pre><code>&lt;ngb-tabset&gt;
   &lt;ngb-tab title="Simple"&gt;
     &lt;template ngbTabContent&gt;Some simple text&lt;/template&gt;
@@ -119,33 +142,44 @@ export class NgbTabset implements AfterContentChecked {
 				</section>
 
 				<section>
-					<h1>Exported instances (1/2)</h1>
-<pre><code>&lt;button ngbTooltip="Hint!"&gt;
-  I've got a tooltip!
+					<h1>Exported instances</h1>
+<pre style="font-size: 0.9em"><code>&lt;button ngbTooltip="Hint!"&gt;
+  I've got a tip!
 &lt;/button&gt;</code></pre>
 				</section>
 
 				<section>
-					<h1>Exported instances (2/2)</h1>
-					<h4>html</h4>
-					<pre><code>&lt;button ngbTooltip="Hint!" #t="ngbTooltip" (click)="t.toggle()"&gt;
-  I've got a tooltip!
-&lt;/button&gt;</code></pre>
+					<h1>Exported instances</h1>
 					<h4>code</h4>
 					<pre><code>@Directive({selector: '[ngbTooltip]', exportAs: 'ngbTooltip'})
 export class NgbTooltip implements OnInit, OnDestroy {
      ...
 }</code></pre>
-				</section>
-
-				<section>
-					<h1><code>replace="false"</code></h1>
-					<p>TODO: code example from ...</p>
+				<h4>usage</h4>
+					<pre><code>&lt;button ngbTooltip="Hint!" #t="ngbTooltip" (click)="t.toggle()"&gt;
+  I've got a tip!
+&lt;/button&gt;</code></pre>
 				</section>
 
 				<section data-background-image="img/rusty_pipe.jpg">
 					<h1>CSS encapsulation</h1>
-					<p>TODO: code example from timepicker</p>
+				</section>
+
+				<section>
+					<h1>CSS encapsulation</h1>
+					<pre style="font-size: 0.7em"><code>@Component({
+  selector: '[ngbDatepickerNavigation]',
+  styles: [`
+    td {
+      text-align: center;
+      padding-bottom: 0.25rem;
+    }
+  `],
+  ...
+ })
+ export class NgbDatepickerNavigation {
+  ..
+ }</code></pre>
 				</section>
 
 				<section data-background-image="img/rxjs.svg">
@@ -155,19 +189,55 @@ export class NgbTooltip implements OnInit, OnDestroy {
 
                 <section>
                     <h2>Typeahead</h2>
-                    <p>TODO: graph + code example</p>
+					<pre style="font-size: 0.65em"><code>&lt;input [(ngModel)]="state" [ngbTypeahead]="findState" /&gt;</code></pre>
+					<pre><code> findState = (userInput$: Observable&lt;string>) => userInput$
+  .debounceTime(200)
+  .distinctUntilChanged()
+  .map(term => term.length &lt; 2 ? [] : states.filter(state => {
+    	return new RegExp(term, 'gi').test(state)).splice(0, 10);
+    });</code></pre>
                 </section>
+
+				<section data-background-image="img/stable.jpg">
+					<h1><code>ngZone.onStable</code></h1>
+					<pre style="font-size: 0.75em"><code>ngZone.onStable.subscribe(() => {
+  if (this._isPopoverOpen()) {
+    positionElements(
+        this._elementRef.nativeElement,
+        this._windowRef.location.nativeElement,
+        this.placement);
+  }
+});</code></pre>
+				</section>
 
 				<section data-background-image="img/sugar.jpg">
 					<h1>Sweet!</h1>
-						<pre><code>(kayup.enter)="selectItem($vent)"</code></pre>
-						<pre><code>(document:click)="closeOthers($vent)"</code></pre>
+						<pre style="font-size: 0.9em"><code>(keyup.arrowLeft)="previousSlide()"</code></pre>
+						<pre style="font-size: 0.9em"><code>(document:click)="closeOthers($vent)"</code></pre>
+						<pre style="font-size: 0.9em"><code>[class.active]="isOpen(panel.id)"</code></pre>
 					</ul>
 				</section>
 
-				<section data-background-image="http://e.fastcompany.net/multisite_files/fastcompany/imagecache/1280/poster/2013/08/3016204-poster-p-google-may-bring-you-a-self-driving-car-sooner-than-later.jpg">
+				<section>
+					<h1>Does it all matter?</h1>
+					<h4>Tabset (300 vs. 150 LOC)</h4>
+					<img src="img/tabs_loc.svg" alt="">
+					<h4>Typeahead (20 vs. 8 items on the API surface)</h4>
+					<p>	</p>
+					<img src="img/typeahead_api.svg" alt="">
+				</section>
+
+				<section data-background-image="img/fast.jpg">
 					<h1>Performance</h1>
-					<h4><code>ChangeDetectionStrategy.OnPush</code></h4>
+					<pre><code>@Component({
+  selector: 'ngb-pagination',
+  changeDetection: ChangeDetectionStrategy.OnPush,
+  template: `...`
+})
+export class NgbPagination implements OnChanges {
+  ...
+}
+</code></pre>
 				</section>
 
 				<section data-background-image="img/ng-bootstrap-universal.png">
@@ -178,19 +248,31 @@ export class NgbTooltip implements OnInit, OnDestroy {
 					<h1>Animations</h1>
 				</section>
 
-				<section data-background-image="">
+				<section data-background-image="img/toolkit.jpg">
 					<h1>UI toolkit</h1>
+				</section>
+
+				<section>
+					<h1>tl;dr;</h1>
+					<ul>
+						<li>Native widgets FTW!</li>
+						<li>Automated cross-browser tests are must</li>
+						<li>Better code and APIs with Angular 2</li>
+						<li>"You will learn RxJS"</li>
+						<li>"This is just the beginning!"</li>
+					</ul>
 				</section>
 
 				<section>
 					<h1><code>PresentationRef</code></h1>
 					<ul>
+						<li><a href="https://pkozlowski-opensource.github.io/ng-europe-2016" target="_blank">https://pkozlowski-opensource.github.io/ng-europe-2016</a></li>
 						<li><a href="https://ng-bootstrap.github.io" target="_blank">https://ng-bootstrap.github.io</a></li>
 						<li><a href="https://twitter.com/pkozlowski_os" target="_blank">@pkozlowski_os</a></li>
 					</ul>
 				</section>
 
-				<section data-background-image="http://www.abouthealthyfood.net/images/2101.jpg">
+				<section data-background-image="img/food.jpg">
 					<h1>Bon Appétit!</h1>
 				</section>
 			</div>
