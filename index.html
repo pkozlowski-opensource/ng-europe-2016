@@ -133,8 +133,11 @@ export class NgbTabset implements AfterContentChecked {
 					<h1>Exported instances</h1>
 					<h4>code</h4>
 					<pre><code>@Directive({selector: '[ngbTooltip]', exportAs: 'ngbTooltip'})
-export class NgbTooltip implements OnInit, OnDestroy {
-     ...
+export class NgbTooltip implements OnInit, OnDestroy
+
+  toggle(): void {
+    ...
+  }
 }</code></pre>
 				<h4>usage</h4>
 					<pre><code>&lt;button ngbTooltip="Hint!" #t="ngbTooltip" (click)="t.toggle()"&gt;
@@ -172,11 +175,10 @@ export class NgbTooltip implements OnInit, OnDestroy {
                     <h2>RxJS-powered typeahead</h2>
 					<pre style="font-size: 0.65em"><code>&lt;input [(ngModel)]="state" [ngbTypeahead]="findState" /&gt;</code></pre>
 					<pre><code> findState = (userInput$: Observable&lt;string>) => userInput$
+  .filter(term => term.length > 2)
   .debounceTime(200)
   .distinctUntilChanged()
-  .map(term => term.length &lt; 2 ? [] : states.filter(state => {
-    	return new RegExp(term, 'gi').test(state)).splice(0, 10);
-    });</code></pre>
+  .map(term => new RegExp(term, 'gi').test(state));</code></pre>
                 </section>
 
 				<section data-background-image="img/stable.jpg">
@@ -232,17 +234,6 @@ export class NgbPagination implements OnChanges {
 				<section data-background-image="img/toolkit.jpg">
 					<h1>UI toolkit</h1>
 				</section>
-
-				<!--<section>
-					<h1>tl;dr;</h1>
-					<ul>
-						<li>Native widgets FTW!</li>
-						<li>Automated cross-browser tests are must</li>
-						<li>Better code and APIs with Angular 2</li>
-						<li>"You will learn RxJS"</li>
-						<li>"This is just the beginning!"</li>
-					</ul>
-				</section>-->
 
 				<section>
 					<h1><code>PresentationRef</code></h1>
