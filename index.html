@@ -26,7 +26,7 @@
 			<div class="slides">
 
 				<section data-background-image="img/cake.jpg">
-					<img src="https://ngeurope.org/events/44/logo.png" style="width: 35%; opacity: 0.8">
+					<img src="img/ng-europe.png" style="width: 35%; opacity: 0.8">
 					<h2>Custom widgets for Angular 2?</h2>
 					<h3>Piece of cake!</h3>
 					<br>
@@ -44,26 +44,6 @@
 
 				<section data-background-image="img/native.jpg">
 					<h1>Native</h1>
-				</section>
-
-				<section data-background-image="img/shoulders-of-giants.jpg">
-					<br><br><br><br><br><br><br><br>
-					<h1>Shoulders Of Giants</h1>
-				</section>
-
-				<section>
-					<h1>Dependency injection</h1>
-					<br>
-					<blockquote>"Add Hijri & Hebrew Calendar support to datepicker"</blockquote>
-					<br>
-					<pre><code>@Component({...})
-export class NgbDatepicker {
-
-  constructor(private _calendar: NgbCalendar) {
-    ...
-  }
-
-}</code></pre>
 				</section>
 
 				<section data-background-image="img/travis-ci-testing.png">
@@ -98,7 +78,7 @@ export class NgbDatepicker {
 
 				<section>
 					<h1>Inert &lt;template&gt;</h1>
-					TODO: tabset img
+					<img src="img/ng_tabs.gif" style="border-radius: 10px;">
 <pre><code>&lt;uib-tabset&gt;
     &lt;uib-tab title="Simple"&gt;Some simple text&lt;/uib-tab&gt;
     &lt;uib-tab title="Expensive stuff"&gt;
@@ -143,6 +123,7 @@ export class NgbTabset implements AfterContentChecked {
 
 				<section>
 					<h1>Exported instances</h1>
+					<img src="img/ng_tooltip.gif" style="border-radius: 10px; box-shadow: 15px 15px 20px -1px rgba(1,1,1,0.75); opacity: 0.9">
 <pre style="font-size: 0.9em"><code>&lt;button ngbTooltip="Hint!"&gt;
   I've got a tip!
 &lt;/button&gt;</code></pre>
@@ -184,11 +165,11 @@ export class NgbTooltip implements OnInit, OnDestroy {
 
 				<section data-background-image="img/rxjs.svg">
 					<h1>RxJS</h1>
-					<p>TODO: typeahead demo</p>
+					<img src="img/ng_typeahead.gif" alt="">
 				</section>
 
                 <section>
-                    <h2>Typeahead</h2>
+                    <h2>RxJS-powered typeahead</h2>
 					<pre style="font-size: 0.65em"><code>&lt;input [(ngModel)]="state" [ngbTypeahead]="findState" /&gt;</code></pre>
 					<pre><code> findState = (userInput$: Observable&lt;string>) => userInput$
   .debounceTime(200)
@@ -252,7 +233,7 @@ export class NgbPagination implements OnChanges {
 					<h1>UI toolkit</h1>
 				</section>
 
-				<section>
+				<!--<section>
 					<h1>tl;dr;</h1>
 					<ul>
 						<li>Native widgets FTW!</li>
@@ -261,7 +242,7 @@ export class NgbPagination implements OnChanges {
 						<li>"You will learn RxJS"</li>
 						<li>"This is just the beginning!"</li>
 					</ul>
-				</section>
+				</section>-->
 
 				<section>
 					<h1><code>PresentationRef</code></h1>
